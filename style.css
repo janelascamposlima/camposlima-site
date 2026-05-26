@@ -1,7 +1,7 @@
 /* Campos Lima — Janelas e Estores
  * Paleta: warm precision (charcoal + cream + ocre)
  * Tipografia: Fraunces (serif, headings) + Inter (sans, body)
- * Zero JS, zero build, zero dependências além das fontes
+ * ~10 linhas de JS no index.html para o menu mobile; sem build, sem deps
  */
 
 :root {
@@ -18,7 +18,6 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -31,7 +30,6 @@ body {
 }
 
 img { display: block; max-width: 100%; }
-
 a { color: inherit; text-decoration: none; }
 
 h1, h2, h3 {
@@ -53,7 +51,7 @@ h1, h2, h3 {
   justify-content: space-between;
   gap: 2rem;
   padding: 1rem var(--gutter);
-  background: rgba(250, 247, 242, 0.9);
+  background: rgba(250, 247, 242, 0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
 }
@@ -86,8 +84,66 @@ h1, h2, h3 {
   border-radius: 999px;
 }
 
+.nav-burger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* ---------- Mobile nav (hamburger toggles .nav.open via JS) ---------- */
+
 @media (max-width: 720px) {
-  .nav a:not(.cta) { display: none; }
+  .nav-burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 28px;
+    height: 22px;
+    z-index: 60;
+  }
+  .nav-burger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--ink);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .nav-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25rem;
+    padding: 1.5rem var(--gutter);
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    transform: translateY(-110%);
+    visibility: hidden;
+    transition: transform 0.25s ease, visibility 0.25s;
+    z-index: 40;
+  }
+  .nav.open {
+    transform: translateY(0);
+    visibility: visible;
+  }
+  .nav a {
+    font-size: 1.05rem;
+    padding: 0.25rem 0;
+  }
+  .nav .cta {
+    align-self: flex-start;
+    padding: 0.65rem 1.25rem;
+    margin-top: 0.5rem;
+  }
 }
 
 /* ---------- Section base ---------- */
@@ -230,6 +286,36 @@ h1, h2, h3 {
 }
 
 .gallery li:hover img { transform: scale(1.04); }
+
+/* ---------- Gallery "Ver mais" expansion (semantic <details>) ---------- */
+
+.gallery-more {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.gallery-more summary {
+  display: inline-block;
+  padding: 0.85rem 1.75rem;
+  font-size: 0.97rem;
+  font-weight: 500;
+  border-radius: 999px;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  list-style: none;
+}
+.gallery-more summary::-webkit-details-marker { display: none; }
+.gallery-more summary::marker { content: ''; }
+.gallery-more summary:hover {
+  background: var(--ink);
+  color: var(--paper);
+  transform: translateY(-1px);
+}
+.gallery-more[open] summary { margin-bottom: 1rem; }
+.gallery-extra { margin-top: 0.5rem; }
 
 /* ---------- About ---------- */
 
