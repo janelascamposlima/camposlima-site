@@ -344,6 +344,23 @@ h1, h2, h3 {
   border-bottom: 1px solid var(--accent);
 }
 
+.contact-review {
+  margin: 2.5rem 0 0;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+
+.review-prompt {
+  margin: 0 0 0.85rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.btn-review {
+  background: var(--accent);
+  color: var(--paper);
+}
+
 .contact-area {
   color: var(--muted);
   font-size: 0.92rem;
