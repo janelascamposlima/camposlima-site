@@ -399,3 +399,53 @@ h1, h2, h3 {
 }
 
 .whatsapp-fab:hover { transform: translateY(-2px); }
+
+/* ---------- Aviso de cookies (Consent Mode) ---------- */
+
+.cookie-banner {
+  position: fixed;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: var(--gutter);
+  z-index: 200;
+  max-width: 540px;
+  margin-inline: auto;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 12px 32px rgba(31, 41, 55, 0.16);
+  padding: 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.cookie-text {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.cookie-actions {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.cookie-btn {
+  font: 500 0.9rem/1 'Inter', sans-serif;
+  padding: 0.65rem 1.3rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.cookie-btn:hover { transform: translateY(-1px); }
+.cookie-accept { background: var(--ink); color: var(--paper); }
+.cookie-reject { background: transparent; border-color: var(--line); color: var(--muted); }
+.cookie-reject:hover { border-color: var(--ink); color: var(--ink); }
+
+/* esconde o botão flutuante de WhatsApp enquanto o aviso está visível */
+.cookie-active .whatsapp-fab { display: none; }

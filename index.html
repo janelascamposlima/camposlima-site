@@ -3,6 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18235001834"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+
+    // Consentimento: negado por defeito (Consent Mode v2) até o utilizador aceitar — ver consent.js
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'wait_for_update': 500
+    });
+
+    gtag('js', new Date());
+    gtag('config', 'AW-18235001834');
+  </script>
+
   <title>Campos Lima — Janelas e Estores | Sintra · Grande Lisboa</title>
   <meta name="description" content="Caixilharia em alumínio e PVC: janelas, estores manuais e elétricos, marquises, portas e reparações. Há mais de 30 anos a servir Sintra, Cascais, Oeiras, Amadora, Lisboa, Loures e Odivelas. Orçamentos grátis.">
 
@@ -181,6 +201,8 @@
       nav.classList.remove('open');
     }));
   </script>
+
+  <script defer src="consent.js"></script>
 
 </body>
 </html>
